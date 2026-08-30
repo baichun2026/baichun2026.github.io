@@ -134,11 +134,11 @@ main { padding: 0 5vw; }
 }
 .project:hover .project-media { transform: scale(1.02); }
 
-/* 竖版海报封面：3:4 比例，完整显示不裁字 */
+/* 海报封面：横向 4:3，填充显示去掉留白 */
 .project-media--poster {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
 }
-.project-media--poster img { object-fit: contain; }
+.project-media--poster img { object-fit: cover; }
 
 /* 交错分栏 */
 .project:nth-child(even) .project-info { order: 2; }
