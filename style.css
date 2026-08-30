@@ -162,6 +162,23 @@ main { padding: 0 5vw; }
 .writing:hover { padding-left: 1rem; }
 .writing:hover .writing-title { color: var(--accent); }
 
+/* 带封面的美篇条目 */
+.writing--cover {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.writing-cover-img {
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+.writing-cover-body { min-width: 0; }
+.writing--cover:hover { padding-left: 0.5rem; }
+
 /* ---------- 关于 ---------- */
 .about-row { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 6vw; align-items: start; }
 .about-lead {
