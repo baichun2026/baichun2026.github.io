@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>向北方 · 赴秋约｜16日自驾环线 详细行程</title>
+<meta name="description" content="2026年9月东北内蒙古自驾大环线详细行程：16天、6省区、约6000公里，含每日安排、门票、美食、预算。" />
+<style>
+  :root{
+    --ink:#1f2937; --sub:#6b7280; --line:#e7e0d4;
+    --paper:#faf7f2; --card:#ffffff;
+    --amber:#d97706; --amber-soft:#fdf0dd;
+    --teal:#0e7490; --teal-soft:#e6f4f7;
+    --red:#b91c1c; --red-soft:#fdecec;
+    --green:#15803d; --green-soft:#e8f5ec;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 20px 90px;}
+
+  /* 顶部导航 */
+  .topnav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 20px; background:rgba(250,247,242,.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav .brand{font-weight:800; font-size:16px; color:var(--ink);}
+  .topnav a.back{font-size:14px; color:var(--sub);}
+  .topnav a.back:hover{color:var(--ink);}
+
+  /* Hero */
+  header.hero{
+    background:linear-gradient(135deg,#7c2d12 0%,#b45309 55%,#d97706 100%);
+    color:#fff; padding:52px 24px 44px; text-align:center;
+  }
+  header.hero .tag{
+    display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:4px 14px; border-radius:999px; font-size:13px; letter-spacing:2px; margin-bottom:16px;
+  }
+  header.hero h1{font-size:30px; margin:0 0 10px; line-height:1.35; font-weight:700;}
+  header.hero p.sub{font-size:15px; margin:0; opacity:.92;}
+  header.hero p.subtitle{font-size:17px; margin:12px 0 0; opacity:.97; font-weight:500; letter-spacing:1px;}
+
+  /* 统计卡片 */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:24px 0 8px;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 12px; text-align:center;}
+  .stat b{display:block; font-size:24px; color:var(--amber);}
+  .stat span{font-size:12px; color:var(--sub);}
+
+  /* 章节 */
+  h2.sec{
+    font-size:22px; margin:44px 0 6px; padding-top:12px;
+    border-top:2px solid var(--amber); display:inline-block; padding-right:16px; letter-spacing:.5px;
+  }
+  .sec-sub{color:var(--sub); font-size:14px; margin:0 0 16px;}
+
+  /* 路线总览 */
+  .route{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; font-size:15px; line-height:2;}
+
+  /* 提示条 */
+  .warn{background:var(--red-soft); border:1px solid #f5c6c6; border-radius:12px; padding:16px 18px; margin:18px 0;}
+  .warn b{color:var(--red);}
+  .note{background:var(--amber-soft); border:1px solid #f3dfb6; border-radius:12px; padding:14px 18px; margin:16px 0; font-size:14px;}
+
+  /* 每日行程卡片 */
+  .day{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:16px 0;}
+  .day-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px;}
+  .day-no{font-size:13px; font-weight:700; color:#fff; background:var(--amber); border-radius:8px; padding:3px 10px; letter-spacing:1px;}
+  .day-title{font-size:18px; font-weight:700;}
+  .day-km{font-size:13px; color:var(--sub); margin-left:auto;}
+  .day ul{margin:8px 0 0; padding-left:20px;}
+  .day li{margin:5px 0; font-size:15px;}
+  .day .stay{color:var(--teal); font-weight:600;}
+
+  /* 表格 */
+  table{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin:14px 0; font-size:14px;}
+  th,td{padding:11px 13px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--amber-soft); font-weight:700; color:#7c4a03; white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td.hl{color:var(--red); font-weight:700;}
+
+  /* 页脚 */
+  footer{padding:32px 20px 40px; text-align:center; color:var(--sub); font-size:13px;}
+  footer a{color:var(--amber);}
+
+  @media(max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    header.hero h1{font-size:24px;}
+    h2.sec{font-size:19px;}
+    .day-title{font-size:16px;}
+    th,td{padding:9px 8px; font-size:13px;}
+    .day-km{margin-left:0; width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="brand" href="index.html">百春</a>
+  <a class="back" href="trip.html">← 返回路线图</a>
+</div>
+
+<header class="hero">
+  <span class="tag">自驾 · 秋季 · 大环线</span>
+  <h1>向北方 · 赴秋约</h1>
+  <p class="sub">说走就走的东北内蒙古自驾大环线</p>
+  <p class="subtitle">2026年9月3日（周四）— 9月18日（周五）</p>
+</header>
+
+<div class="wrap">
+
+  <div class="stats">
+    <div class="stat"><b>16</b><span>天</span></div>
+    <div class="stat"><b>6</b><span>省区</span></div>
+    <div class="stat"><b>6000</b><span>公里</span></div>
+    <div class="stat"><b>1</b><span>段轮渡</span></div>
+  </div>
+
+  <h2 class="sec">路线总览（顺时针环线）</h2>
+  <p class="sec-sub">青岛出发 · 青岛返程</p>
+  <div class="route">
+    青岛 → 秦皇岛·山海关 → 兴城(路过) → 通辽 → 阿尔山 → 呼伦贝尔大草原 → 满洲里 → 额尔古纳 → 根河 → 漠河·北极村 → 加格达奇(路过) → 五大连池 → 齐齐哈尔 → 大庆 → 哈尔滨 → 长春(路过) → 沈阳 → 丹东 → 大连 → 烟台(轮渡) → 威海 → 青岛
+  </div>
+
+  <div class="warn">
+    <b>⚠️ 一条必须提前确认的路况</b><br>
+    <b>S204 省道「满归—漠河」段（孟贵河桥）</b> 曾因应急抢修、部分路段双向封闭。这是根河→漠河的必经路段。
+    <ul style="margin:10px 0 0; padding-left:20px;">
+      <li>出发前一周务必用高德/腾讯地图实测「根河→漠河北极村」导航，或致电漠河交通部门确认。</li>
+      <li>若仍封闭：绕行 根河→加格达奇→加漠公路北上漠河（全程铺装，多走约 300km）。</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">每日行程安排</h2>
+  <p class="sec-sub">共 16 天，逐日详解</p>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 1</span><span class="day-title">青岛 → 秦皇岛·山海关</span><span class="day-km">9月3日 · 约750km</span></div>
+    <ul>
+      <li>高速约 8–9 小时，一早出发，走 G15沈海 → G18荣乌 → 京哈G1，下午进秦皇岛。</li>
+      <li>直接到山海关，游览天下第一关·山海关古城，夜游古城、吃海鲜锅/浑锅。</li>
+      <li class="stay">🏨 住：山海关 / 秦皇岛市区</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 2</span><span class="day-title">山海关 → 兴城(路过) → 通辽</span><span class="day-km">9月4日 · 约580km</span></div>
+    <ul>
+      <li>约 7–8 小时。上午补看老龙头（长城入海处），随后出发。</li>
+      <li>路过辽宁兴城，简单参观兴城古城（宁远古城）约 1 小时。</li>
+      <li>下午经朝阳/阜新方向，晚上赶到通辽。</li>
+      <li class="stay">🏨 住：通辽市区</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 3</span><span class="day-title">通辽 → 阿尔山</span><span class="day-km">9月5日 · 约550km</span></div>
+    <ul>
+      <li>约 7–8 小时（经乌兰浩特）。进入内蒙古，草原与丘陵交替。</li>
+      <li>傍晚抵阿尔山，可泡温泉。有富余时间可看市区阿尔山火车站（百年老站）。</li>
+      <li class="stay">🏨 住：阿尔山市区 / 伊尔施镇</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 4</span><span class="day-title">阿尔山 → 呼伦贝尔大草原</span><span class="day-km">9月6日 · 景区+约280km</span></div>
+    <ul>
+      <li>上午游阿尔山国家森林公园：天池、三潭峡、杜鹃湖、石塘林、驼峰岭天池。</li>
+      <li>下午驱车前往呼伦贝尔（海拉尔方向）。</li>
+      <li class="stay">🏨 住：草原景区附近（蒙古包/海拉尔）</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 5</span><span class="day-title">呼伦贝尔 → 满洲里</span><span class="day-km">9月7日 · 约200km</span></div>
+    <ul>
+      <li>上午游草原：莫尔格勒河曲水、金帐汗蒙古部落，可体验骑马。</li>
+      <li>下午前往满洲里，傍晚看国门景区与套娃广场夜景。</li>
+      <li class="stay">🏨 住：满洲里市区</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 6</span><span class="day-title">满洲里 → 额尔古纳 → 根河</span><span class="day-km">9月8日 · 约380km</span></div>
+    <ul>
+      <li>上午逛满洲里中俄互贸区后出发，经额尔古纳看湿地（亚洲第一湿地）。</li>
+      <li>傍晚到根河（中国"冷极"）。</li>
+      <li class="stay">🏨 住：根河市区</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 7</span><span class="day-title">根河 → 满归 → 漠河·北极村</span><span class="day-km">9月9日 · 约400km</span></div>
+    <ul>
+      <li>上午：敖鲁古雅使鹿部落（门票约 50–105 元），喂驯鹿、看撮罗子。</li>
+      <li>穿越大兴安岭林区，经金河、阿龙山、满归。下午到北极村。</li>
+      <li class="stay">🏨 住：北极村 / 漠河市区</li>
+      <li style="color:var(--red);"><b>⚠️ 本日走 S204 满归—漠河段，出发前务必确认孟贵河桥抢修是否完工；满归务必加满油。</b></li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 8</span><span class="day-title">漠河 → 加格达奇(路过) → 五大连池</span><span class="day-km">9月10日 · 约750km</span></div>
+    <ul>
+      <li>本日最长，务必早起。沿加漠公路南下，途经加格达奇（中途午餐+休整+加油）。</li>
+      <li>后转 G111 经嫩江继续南下至五大连池。</li>
+      <li class="stay">🏨 住：五大连池</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 9</span><span class="day-title">五大连池 → 齐齐哈尔</span><span class="day-km">9月11日 · 约250km</span></div>
+    <ul>
+      <li>上午游五大连池：老黑山火山口、温泊、龙门石寨、药泉山。下午前往齐齐哈尔。</li>
+      <li class="stay">🏨 住：齐齐哈尔</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 10</span><span class="day-title">齐齐哈尔 → 大庆 → 哈尔滨</span><span class="day-km">9月12日 · 约310km</span></div>
+    <ul>
+      <li>若赶早可看扎龙自然保护区（丹顶鹤放飞）。路过铁人王进喜纪念馆。</li>
+      <li>傍晚到哈尔滨。</li>
+      <li class="stay">🏨 住：哈尔滨（中央大街附近）</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 11</span><span class="day-title">哈尔滨休整 · 游览</span><span class="day-km">9月13日 · 市区观光</span></div>
+    <ul>
+      <li>中央大街、圣索菲亚大教堂、松花江畔、太阳岛。</li>
+      <li>尝红肠、锅包肉、马迭尔冰棍。</li>
+      <li class="stay">🏨 住：哈尔滨</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 12</span><span class="day-title">哈尔滨 → 长春(路过游览) → 沈阳</span><span class="day-km">9月14日 · 约550km</span></div>
+    <ul>
+      <li>上午约 3 小时到长春，午餐+游览伪满皇宫博物院（约 2–3 小时）。</li>
+      <li>下午约 3.5 小时抵沈阳，晚上逛沈阳故宫夜景/中街。</li>
+      <li>长春不住宿，作为途中游览点。</li>
+      <li class="stay">🏨 住：沈阳</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 13</span><span class="day-title">沈阳 → 丹东 → 大连</span><span class="day-km">9月15日 · 约540km</span></div>
+    <ul>
+      <li>上午可看张氏帅府后出发，到丹东看鸭绿江断桥、隔江望朝鲜，傍晚抵大连。</li>
+      <li class="stay">🏨 住：大连</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 14</span><span class="day-title">大连游览 + 晚班轮渡 → 烟台</span><span class="day-km">9月16日 · 海上约190km</span></div>
+    <ul>
+      <li>白天：星海广场、老虎滩/金石滩、俄罗斯风情街。</li>
+      <li>傍晚提前到港办理车辆上船，晚班轮渡（大连→烟台）海上过夜。</li>
+      <li>带车上轮渡需提前订票并预留 1.5–2 小时安检登船。</li>
+      <li class="stay">🏨 住：轮渡</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 15</span><span class="day-title">烟台 → 威海（沿海公路）</span><span class="day-km">9月17日 · 约100–150km</span></div>
+    <ul>
+      <li>早晨抵烟台，沿滨海公路往威海，可停成山头（天尽头）、荣成海草房。</li>
+      <li class="stay">🏨 住：威海</li>
+    </ul>
+  </div>
+
+  <div class="day">
+    <div class="day-head"><span class="day-no">DAY 16</span><span class="day-title">威海 → 青岛（返程）</span><span class="day-km">9月18日 · 约300km</span></div>
+    <ul>
+      <li>上午可选刘公岛，之后沿海边公路返青岛，傍晚到家。</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">🎫 门票价格总表（2026 参考）</h2>
+  <p class="sec-sub">60 岁以上多数景区半价或免票，身份证随身带，每个售票口都问一句「老年优惠」</p>
+  <table>
+    <tr><th>景点</th><th>价格</th><th>备注</th></tr>
+    <tr><td>山海关 天下第一关/老龙头</td><td>50/60 元</td><td>通票 140 元</td></tr>
+    <tr><td>兴城古城</td><td>进城免费</td><td>内部通票 98 元</td></tr>
+    <tr><td>阿尔山国家森林公园</td><td>285 元</td><td>门票180+观光车105；48小时有效</td></tr>
+    <tr><td>额尔古纳湿地</td><td>约 65 元</td><td>亚洲第一湿地</td></tr>
+    <tr><td>白桦林景区</td><td>约 50 元</td><td>9月正黄</td></tr>
+    <tr><td>满洲里 国门景区</td><td>60 元</td><td>+观光车15</td></tr>
+    <tr><td>套娃景区</td><td>148 元</td><td>外围广场免费</td></tr>
+    <tr><td>呼伦湖</td><td>约 40–60 元</td><td>满洲里周边</td></tr>
+    <tr><td>敖鲁古雅使鹿部落</td><td>约 50–105 元</td><td>喂驯鹿苔藓10元</td></tr>
+    <tr><td>北极村</td><td>68+30 元</td><td>观光车30；48小时有效</td></tr>
+    <tr><td>龙江第一湾+乌苏里浅滩</td><td>联票 50 元</td><td>观光车60自愿</td></tr>
+    <tr><td>九曲十八弯</td><td>50 元</td><td>清晨雾景最佳</td></tr>
+    <tr><td>五大连池</td><td>分火山点购票</td><td>老黑山、温泊等分开</td></tr>
+    <tr><td>扎龙自然保护区</td><td>约 50 元</td><td>注意放飞场次</td></tr>
+    <tr><td>鸭绿江断桥/刘公岛</td><td>约 30/100 元</td><td>刘公岛含船票</td></tr>
+  </table>
+
+  <h2 class="sec">🍽️ 一路吃什么</h2>
+  <p class="sec-sub">13 城特色美食速查</p>
+  <table>
+    <tr><th>城市</th><th>特色</th></tr>
+    <tr><td>山海关</td><td>四条包子、浑锅、海鲜</td></tr>
+    <tr><td>兴城</td><td>海鲜、海蜇头、古城小吃</td></tr>
+    <tr><td>通辽</td><td>科尔沁牛肉火锅、牛肉干、奶茶</td></tr>
+    <tr><td>阿尔山</td><td>冷水鱼、山野菜、矿泉豆腐</td></tr>
+    <tr><td>海拉尔/呼伦贝尔</td><td>涮羊肉、手把肉、锅茶</td></tr>
+    <tr><td>恩和/室韦</td><td>俄餐、大列巴、蓝莓酱</td></tr>
+    <tr><td>满洲里</td><td>卢布里俄餐、烤肉串、格瓦斯</td></tr>
+    <tr><td>根河</td><td>铁锅炖、柳根鱼炖豆腐</td></tr>
+    <tr><td>漠河</td><td>黑龙江鱼、蓝莓</td></tr>
+    <tr><td>五大连池/齐齐哈尔</td><td>齐齐哈尔烤肉（BBQ之都）</td></tr>
+    <tr><td>哈尔滨</td><td>红肠、锅包肉、马迭尔冰棍</td></tr>
+    <tr><td>沈阳/丹东</td><td>老边饺子、烤冷面、海鲜</td></tr>
+    <tr><td>大连/威海</td><td>海鲜、焖子、鲅鱼水饺</td></tr>
+  </table>
+
+  <h2 class="sec">🛤️ 边防卡线走法（可选精华段）</h2>
+  <p class="sec-sub">时间充裕时可选</p>
+  <div class="route" style="line-height:2;">
+    如时间充裕，满洲里—额尔古纳间可走边境精华线：额尔古纳 → 恩和（俄罗斯族乡）→ 室韦（界河）→ 边防卡线（五卡/七卡/九卡）→ 黑山头（日落）→ 满洲里。
+  </div>
+  <ul style="padding-left:20px; font-size:15px;">
+    <li>卡线部分路段为砂石路，雨后泥泞可改走正路；沿途有边防检查站，全员带身份证；边境禁飞无人机。</li>
+  </ul>
+
+  <h2 class="sec">🔥 防火与边境</h2>
+  <ul style="padding-left:20px; font-size:15px;">
+    <li><b>森林防火期 9月15日 起</b>：大兴安岭林区严禁野外吸烟用火，打火机进林区前收好。行程 Day 7 起进入核心林区，正好卡在防火期开始。</li>
+    <li>边境地区（满洲里、室韦、漠河、额尔古纳）可能有边防检查，随身带身份证、行驶证、驾驶证。边境口岸附近禁止无人机。</li>
+  </ul>
+
+  <h2 class="sec">📋 行前清单</h2>
+  <ul style="padding-left:20px; font-size:15px;">
+    <li><b>证件</b>：身份证（全员）、驾驶证、行驶证、车辆保险/交强险。</li>
+    <li><b>车辆</b>：出发前全面保养（机油、刹车、轮胎、防冻液、玻璃水、电瓶），备胎/充气泵/应急电源。</li>
+    <li><b>预订</b>：酒店、轮渡、重点景区门票提前订。</li>
+    <li>现金少量备用（个别林区/加油站信号差）。</li>
+    <li>北线早晚很冷（漠河夜间可破 0℃），分层穿搭：速干打底+抓绒+冲锋衣/羽绒服。</li>
+  </ul>
+
+  <h2 class="sec">💰 预算估算（2人同行）</h2>
+  <table>
+    <tr><th>项目</th><th>估算</th></tr>
+    <tr><td>油费</td><td>约 3000–3800 元</td></tr>
+    <tr><td>过路费</td><td>约 1200–1800 元</td></tr>
+    <tr><td>轮渡（车+2人）</td><td>约 800–1200 元</td></tr>
+    <tr><td>住宿</td><td>约 3500–5000 元</td></tr>
+    <tr><td>门票</td><td>约 2000–2600 元</td></tr>
+    <tr><td class="hl">合计</td><td class="hl">约 1.4–1.7 万元</td></tr>
+  </table>
+  <div class="note">备注：以上为 2026 参考，价格、政策、路况请出发前通过官方渠道再次确认。</div>
+
+</div>
+
+<footer>
+  <p>百春 · 东北内蒙古自驾大环线｜详细行程版</p>
+  <p><a href="trip.html">查看动态路线图 →</a> ｜ <a href="index.html">返回首页</a></p>
+</footer>
+
+</body>
+</html>
