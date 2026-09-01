@@ -144,6 +144,13 @@ main { padding: 0 5vw; }
 .project:nth-child(even) .project-info { order: 2; }
 .project:nth-child(even) .project-media { order: 1; }
 
+/* 上图下文作品条目 */
+.project--stack {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.project--stack .project-media { aspect-ratio: 16 / 9; }
+
 /* 纯文字作品条目（无题图，水平排列） */
 .project--text {
   display: flex;
