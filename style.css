@@ -144,6 +144,17 @@ main { padding: 0 5vw; }
 .project:nth-child(even) .project-info { order: 2; }
 .project:nth-child(even) .project-media { order: 1; }
 
+/* 纯文字作品条目（无题图，水平排列） */
+.project--text {
+  display: flex;
+  align-items: baseline;
+  gap: 1.6rem;
+  grid-template-columns: none;
+}
+.project--text .project-no { flex: 0 0 auto; }
+.project--text .project-title { flex: 1 1 auto; margin: 0; }
+.project--text .project-meta { flex: 0 0 auto; margin: 0; }
+
 /* ---------- 随笔列表 ---------- */
 .writing-list { border-top: 1px solid var(--line); }
 .writing {
