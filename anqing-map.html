@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>徽风皖韵 · 大别山麓·红色金寨启程</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{--ink:#1f2933; --sub:#52606d; --red:#c0392b; --green:#1e7d4f; --blue:#1a5fb4;}
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; height:100%; font-family:-apple-system,"PingFang SC","Noto Sans SC",sans-serif; color:var(--ink); overflow:hidden;}
+  #map{position:absolute; inset:0; background:#dfe6ec;}
+
+  /* 顶部悬浮控制条 */
+  #topbar{position:fixed; top:0; left:0; right:0; z-index:1200;
+    display:flex; align-items:center; gap:10px; padding:8px 12px;
+    background:rgba(31,41,51,.92); color:#fff; backdrop-filter:blur(6px); flex-wrap:wrap;}
+  #topbar h1{font-size:15px; margin:0; font-weight:600; display:flex; flex-direction:column; line-height:1.2;}
+  #topbar h1 .sub{font-size:11px; font-weight:400; color:#cbd5e1; margin-top:1px; letter-spacing:.5px;}
+  #playbtn{cursor:pointer; background:var(--green); color:#fff; border:none; border-radius:8px; padding:6px 14px; font-size:13px; white-space:nowrap;}
+  #playbtn:hover{filter:brightness(1.08);}
+  #clock{font-variant-numeric:tabular-nums; font-size:16px; font-weight:700; background:#000; padding:2px 9px; border-radius:6px;}
+  #now{font-size:12px; color:#cbd5e1; flex:1; min-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  #toggle{display:none;}
+
+  /* 站点侧栏（桌面右侧 / 手机底部抽屉） */
+  #side{position:fixed; z-index:1100; background:rgba(255,255,255,.96); backdrop-filter:blur(6px);
+    box-shadow:0 0 24px rgba(0,0,0,.18); transition:transform .25s ease; padding:10px 12px 14px;}
+  @media(min-width:720px){
+    #side{top:74px; right:0; bottom:0; width:300px; border-radius:14px 0 0 14px; overflow:auto;}
+  }
+  @media(max-width:719px){
+    #side{left:0; right:0; bottom:0; max-height:46vh; border-radius:14px 14px 0 0; overflow:auto;}
+    #side.hidden{transform:translateY(105%);}
+    #toggle{display:block; margin-left:auto; background:rgba(255,255,255,.16); border:none; color:#fff; border-radius:8px; padding:6px 12px; font-size:13px; cursor:pointer;}
+  }
+  #side h2{font-size:13px; margin:2px 0 8px; color:var(--sub); font-weight:600;}
+  .sta{display:flex; align-items:center; gap:8px; padding:7px 8px; border-radius:8px; font-size:13px; cursor:pointer;}
+  .sta:active{background:#eef2f5;}
+  .sta .dot{width:10px; height:10px; border-radius:50%; flex:none;}
+  .sta .tm{color:var(--sub); font-variant-numeric:tabular-nums; width:58px; flex:none; font-size:12px;}
+  .sta .nm{flex:1;}
+  .sta.active{background:#fff3cd; font-weight:600;}
+  .legend{display:flex; gap:14px; font-size:12px; color:var(--sub); margin-top:10px; flex-wrap:wrap;}
+  .legend i{display:inline-block; width:18px; height:4px; vertical-align:middle; margin-right:4px;}
+  .hint{font-size:11px; color:var(--sub); margin-top:8px; line-height:1.5;}
+
+  /* 脉冲标记 */
+  .pulse{position:relative; width:16px; height:16px;}
+  .pulse::before{content:""; position:absolute; inset:0; border-radius:50%; background:#c0392b; box-shadow:0 0 0 0 rgba(192,57,43,.6);} .pulse.cur::before{animation:p 1.8s infinite;}
+  .pulse.g::before{background:#1e7d4f; box-shadow:0 0 0 0 rgba(30,125,79,.6);}
+  .pulse.b::before{background:#1a5fb4; box-shadow:0 0 0 0 rgba(26,95,180,.6);}
+  @keyframes p{0%{box-shadow:0 0 0 0 rgba(192,57,43,.6);}70%{box-shadow:0 0 0 12px rgba(192,57,43,0);}100%{box-shadow:0 0 0 0 rgba(192,57,43,0);}}
+  .pin{position:relative; width:16px; height:16px;}
+  .pinlbl{position:absolute; top:16px; left:50%; transform:translateX(-50%); white-space:nowrap; font-size:11px; line-height:1.25; background:rgba(255,255,255,.92); color:#1f2933; padding:2px 6px; border-radius:5px; box-shadow:0 1px 4px rgba(0,0,0,.28); opacity:0; pointer-events:none; transition:opacity .25s; z-index:500;}
+  .pinlbl.show{opacity:1;}
+  .pinlbl.active{background:#fff3cd; color:#c0392b; font-weight:700; box-shadow:0 1px 6px rgba(192,57,43,.45);}
+  .leaflet-popup-content{font-size:13px; line-height:1.6;}
+  .leaflet-popup-content b{color:#c0392b;}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <h1>徽风皖韵<span class="sub">大别山麓·红色金寨启程</span></h1>
+  <button id="playbtn">▶ 播放</button>
+  <button id="satbtn">🛰 卫星</button>
+  <span id="clock">08:00:00</span>
+  <span id="now">准备出发 · 金寨县城</span>
+  <button id="toggle">站点</button>
+</div>
+<div id="map"></div>
+<div id="side">
+  <h2>行程站点（点地图上的点看介绍，点此列表跳转）</h2>
+  <div id="stalist"></div>
+  <div class="legend">
+    <span><i style="background:#1e7d4f"></i>山路段 G529</span>
+    <span><i style="background:#1a5fb4"></i>高速段</span>
+    <span><i style="background:#c0392b"></i>景点/起终点</span>
+  </div>
+  <div class="hint">点「播放」看小车沿路线实时跑；绿色=红岭公路山路，蓝色=古碑上高速后路段。地图坐标为示意近似值，实际以车机导航为准。</div>
+</div>
+
+<script>
+const P = [
+  ["金寨县城·红军广场", 31.462,115.910, 0,   "<b>08:00 出发</b><br>将军县，59 位开国将军、10 万英烈；看烈士纪念塔、革命博物馆。"],
+  ["梅山湖·梅山水库",   31.480,115.935, 50,  "<b>08:50</b><br>1954 年连拱坝，淮河上游枢纽，高峡平湖。"],
+  ["西茶谷",            31.290,116.060, 90,  "<b>09:30</b><br>六安瓜片核心茶区，层层茶园梯田。"],
+  ["东莲花山",          31.270,116.020, 105, "<b>09:45</b><br>近千米高山度假区，玻璃天路、莲花之镜，冬滑雪夏避暑。"],
+  ["响山寺",            31.340,116.000, 140, "<b>10:20</b><br>唐建中四年段秀实舍宅的千年古寺，省级文保；旁有廖磊墓、李开文故居。"],
+  ["丁埠村",            31.270,115.820, 170, "<b>10:50</b><br>1929 立夏节起义（商南起义）策源地，大王庙旧址。"],
+  ["大湾村",            31.245,115.880, 200, "<b>11:20</b><br>习近平总书记 2016 考察的脱贫示范村，民宿集群。"],
+  ["马鬃岭",            31.180,115.880, 240, "<b>12:00 车览</b><br>海拔 1671 m 原始森林，华东最后一片原始森林之一。"],
+  ["古碑收费站·上高速", 31.300,115.925, 280, "<b>12:40</b><br>就近上 G42/G4222，转 G35 去安庆（deadline 13:00）。"],
+  ["霍山枢纽",          31.170,116.330, 330, "<b>13:30</b><br>G4222 × G35 十字枢纽，转 G35 南下。"],
+  ["岳西",              30.850,116.360, 390, "<b>14:30</b><br>经 G35 济广高速南下，安庆在望。"],
+  ["安庆",              30.510,117.050, 465, "<b>15:45 到达</b><br>17:00 前稳到。可去迎江寺·振风塔、倒扒狮街。"]
+];
+
+const map = L.map('map',{zoomControl:false, scrollWheelZoom:true}).setView([31.05,116.35],8);
+L.control.zoom({position:'bottomright'}).addTo(map);
+L.tileLayer('https://wprd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&style=7&x={x}&y={y}&z={z}',{subdomains:'1234', maxZoom:18, attribution:'© 高德地图'}).addTo(map);
+const satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19, attribution:'© Esri'});
+let satOn=false;
+document.getElementById('satbtn').onclick=()=>{
+  if(satOn){ map.removeLayer(satLayer); satOn=false; document.getElementById('satbtn').textContent='🛰 卫星'; }
+  else { satLayer.addTo(map); satOn=true; document.getElementById('satbtn').textContent='🗺 标准'; }
+};
+
+const allLatLng = P.map(p=>[p[1],p[2]]);
+// 初始取景避开面板：桌面避右侧 300px 站点栏，手机避底部抽屉(46vh)
+(function(){ const s=map.getSize(); let padL=8,padT=64,padR=8,padB=8;
+  if(window.innerWidth<720){ padB=Math.round(s.y*0.46); } else { padR=312; }
+  map.fitBounds(L.latLngBounds(allLatLng), {paddingTopLeft:[padL,padT], paddingBottomRight:[padR,padB]});
+})();
+// 分段着色路线：山路 G529 绿、高速段蓝，与圆点配色一致
+L.polyline(allLatLng.slice(0,9),{color:"#1e7d4f", weight:4, opacity:.8}).addTo(map);   // 金寨→古碑 山路
+L.polyline(allLatLng.slice(8),{color:"#1a5fb4", weight:4, opacity:.8}).addTo(map);      // 古碑→安庆 高速
+// 已驶过轨迹（半透明红，叠加但不遮盖底色分段）
+const traveled = L.polyline([],{color:"#c0392b", weight:5, opacity:.4}).addTo(map);
+
+const statist = document.getElementById('stalist');
+const stationMarkers = [];
+P.forEach((p,i)=>{
+  const cls = (i===0||i===P.length-1) ? "" : (i>=8?"b":"g");
+  const lblCls = i===0 ? "pinlbl show active" : "pinlbl";
+  const icon = L.divIcon({className:"", html:'<div class="pin"><div class="pulse '+cls+'"></div><div class="'+lblCls+'">'+p[0]+'</div></div>', iconSize:[16,16], iconAnchor:[8,8]});
+  const m = L.marker([p[1],p[2]],{icon}).addTo(map);
+  m.bindPopup("<b>"+p[0]+"</b><br>"+p[4]);
+  stationMarkers.push(m);
+  const row = document.createElement('div'); row.className='sta'; row.dataset.idx=i;
+  const col = i>=8? "#1a5fb4" : "#1e7d4f";
+  const tot=480+p[3]; const hh=String(Math.floor(tot/60)).padStart(2,'0'); const mm=String(tot%60).padStart(2,'0');
+  row.innerHTML = '<span class="tm">'+hh+':'+mm+':00</span><span class="dot" style="background:'+col+'"></span><span class="nm">'+p[0]+'</span>';
+  row.onclick=()=>{ map.setView([p[1],p[2]],11); m.openPopup(); if(window.innerWidth<720) document.getElementById('side').classList.add('hidden'); };
+  statist.appendChild(row);
+});
+
+const carIcon = L.divIcon({className:"", html:'<div style="text-align:center"><div style="background:#c0392b;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;white-space:nowrap;margin:0 auto 2px;box-shadow:0 1px 3px rgba(0,0,0,.3)">鲁B·6U568</div><div style="font-size:22px;line-height:1">🚙</div></div>', iconSize:[72,42], iconAnchor:[36,32]});
+const car = L.marker(allLatLng[0],{icon:carIcon, zIndexOffset:1000}).addTo(map);
+
+const clockEl=document.getElementById('clock'); const nowEl=document.getElementById('now');
+function minToClock(m){ const t=(480+m)*60; const h=Math.floor(t/3600); const mn=Math.floor((t%3600)/60); const sc=Math.floor(t%60); return String(h).padStart(2,'0')+':'+String(mn).padStart(2,'0')+':'+String(sc).padStart(2,'0'); }
+function setActive(idx){ document.querySelectorAll('.sta').forEach(r=>r.classList.toggle('active', +r.dataset.idx===idx)); }
+// 走到哪个点，哪个点的名字标签亮起（已到过的保留名字，当前点高亮）
+function showLabel(cur){
+  if(cur===lastCur) return;
+  if(lastCur>=0){ const pe=stationMarkers[lastCur].getElement(); if(pe){ const l=pe.querySelector('.pinlbl'); if(l) l.classList.remove('active'); const pu=pe.querySelector('.pulse'); if(pu) pu.classList.remove('cur'); } }
+  const pe=stationMarkers[cur].getElement(); if(pe){ const l=pe.querySelector('.pinlbl'); if(l){ l.classList.add('show','active'); } const pu=pe.querySelector('.pulse'); if(pu) pu.classList.add('cur'); }
+  lastCur=cur;
+}
+function resetLabels(){
+  stationMarkers.forEach((mk,idx)=>{ const pe=mk.getElement(); if(pe){ const l=pe.querySelector('.pinlbl'); if(l){ l.classList.toggle('show', idx===0); l.classList.toggle('active', idx===0); } } });
+  lastCur=0;
+}
+
+  let playing=false, raf=null, startTs=null, DUR=32000, lastCur=0, finished=false;
+  const M_END=P[P.length-1][3]; // 动画终点对齐最后一站真实到达时刻（安庆 465 = 15:45）
+function lerp(a,b,t){return a+(b-a)*t;}
+// 让小车始终落在面板以外的可见区中心：桌面避右栏、手机避底部抽屉
+function followCar(lat,lng){
+  const cur=map.latLngToContainerPoint([lat,lng]); const s=map.getSize();
+  let tx, ty;
+  if(window.innerWidth<720){ tx=s.x/2; ty=s.y*0.26; } else { tx=s.x/2-150; ty=s.y*0.52; }
+  const dx=cur.x-tx, dy=cur.y-ty;
+  if(Math.abs(dx)>s.x*0.18 || Math.abs(dy)>s.y*0.18) map.panBy([dx,dy],{animate:true,duration:0.3});
+}
+function frame(ts){
+  if(!startTs) startTs=ts;
+  let p=Math.min((ts-startTs)/DUR,1);
+  let m=p*M_END;
+  let i=0; while(i<P.length-2 && m>P[i+1][3]) i++;
+  const a=P[i], b=P[i+1];
+  // 行进段按行程单真实时段对齐（点与点之间匀速插值），使每段的相对时长与计划一致
+  const seg=(m-a[3])/(b[3]-a[3]||1);
+  const lat=lerp(a[1],b[1],seg), lng=lerp(a[2],b[2],seg);
+  car.setLatLng([lat,lng]);
+  followCar(lat,lng);
+  traveled.setLatLngs(allLatLng.slice(0,i+1).concat([[lat,lng]]));
+  clockEl.textContent=minToClock(m);
+  let cur=0; for(let k=0;k<P.length;k++){ if(m>=P[k][3]) cur=k; }
+  setActive(cur); showLabel(cur); nowEl.textContent = (p<1?("行驶中 · "+P[cur][0]) : "已到达 · 安庆");
+  if(p<1){ raf=requestAnimationFrame(frame); } else { playing=false; finished=true; document.getElementById('playbtn').textContent='▶ 重播'; }
+}
+document.getElementById('playbtn').onclick=()=>{
+  if(playing){ cancelAnimationFrame(raf); playing=false; document.getElementById('playbtn').textContent='▶ 播放'; return; }
+  if(finished){ resetLabels(); finished=false; }
+  playing=true; startTs=null; document.getElementById('playbtn').textContent='⏸ 暂停';
+  raf=requestAnimationFrame(frame);
+};
+const tbtn=document.getElementById('toggle');
+if(tbtn) tbtn.onclick=()=>document.getElementById('side').classList.toggle('hidden');
+</script>
+</body>
+</html>
