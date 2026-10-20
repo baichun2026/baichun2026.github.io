@@ -149,6 +149,9 @@ main { padding: 0 5vw; }
   grid-template-columns: 1fr;
   gap: 2rem;
 }
+/* stack 条目按 DOM 顺序排列，不受奇偶交错 order 规则影响 */
+.project--stack .project-info,
+.project--stack .project-media { order: 0; }
 .project--stack .project-media { aspect-ratio: 16 / 9; }
 .project--stack .project-media--poster { aspect-ratio: 2 / 1; }
 
