@@ -150,6 +150,7 @@ main { padding: 0 5vw; }
   gap: 2rem;
 }
 .project--stack .project-media { aspect-ratio: 16 / 9; }
+.project--stack .project-media--poster { aspect-ratio: 2 / 1; }
 
 /* 纯文字作品条目（无题图，水平排列） */
 .project--text {
