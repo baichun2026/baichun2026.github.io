@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>徽风皖韵 · 大别山麓 红色金寨启程｜金寨 → 安庆 一日自驾 详细行程</title>
+<meta name="description" content="2026年10月21日金寨到安庆一日自驾：G529 红岭公路穿越大别山，红军广场、梅山湖、西茶谷、响山寺、大湾村、马鬃岭，午后古碑上高速，15:45 前后抵安庆。" />
+<style>
+  :root{
+    --ink:#1f2937; --sub:#6b7280; --line:#e3e8e4;
+    --paper:#f8faf8; --card:#ffffff;
+    --main:#0e7490; --main-soft:#e6f4f7;
+    --red:#b91c1c; --red-soft:#fdecec;
+    --green:#15803d; --green-soft:#e8f5ec;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 20px 90px;}
+
+  /* 顶部导航 */
+  .topnav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 20px; background:rgba(248,250,248,.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav .brand{font-weight:800; font-size:16px; color:var(--ink);}
+  .topnav a.back{font-size:14px; color:var(--sub);}
+  .topnav a.back:hover{color:var(--ink);}
+
+  /* Hero */
+  header.hero{
+    background:linear-gradient(135deg,#134e4a 0%,#0e7490 55%,#155e75 100%);
+    color:#fff; padding:52px 24px 44px; text-align:center;
+  }
+  header.hero .tag{
+    display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:4px 14px; border-radius:999px; font-size:13px; letter-spacing:2px; margin-bottom:16px;
+  }
+  header.hero h1{font-size:30px; margin:0 0 10px; line-height:1.35; font-weight:700;}
+  header.hero p.sub{font-size:15px; margin:0; opacity:.92;}
+  header.hero p.subtitle{font-size:17px; margin:12px 0 0; opacity:.97; font-weight:500; letter-spacing:1px;}
+
+  /* 封面题图 */
+  .cover-fig{margin:26px 0 8px; position:relative;}
+  .cover-fig img{width:100%; border-radius:14px; display:block; box-shadow:0 4px 18px rgba(0,0,0,.14);}
+  .cover-fig figcaption{text-align:center; font-size:12px; color:var(--sub); margin-top:8px; letter-spacing:.5px;}
+
+  /* 统计卡片 */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:24px 0 8px;}
+  .stat{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 12px; text-align:center;}
+  .stat b{display:block; font-size:24px; color:var(--main);}
+  .stat span{font-size:12px; color:var(--sub);}
+
+  /* 章节 */
+  h2.sec{
+    font-size:22px; margin:44px 0 6px; padding-top:12px;
+    border-top:2px solid var(--main); display:inline-block; padding-right:16px; letter-spacing:.5px;
+  }
+  .sec-sub{color:var(--sub); font-size:14px; margin:0 0 16px;}
+
+  /* 路线总览 */
+  .route{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; font-size:15px; line-height:2;}
+
+  /* 提示条 */
+  .warn{background:var(--red-soft); border:1px solid #f5c6c6; border-radius:12px; padding:16px 18px; margin:18px 0;}
+  .warn b{color:var(--red);}
+  .note{background:var(--main-soft); border:1px solid #bfe3ec; border-radius:12px; padding:14px 18px; margin:16px 0; font-size:14px;}
+
+  /* 行程卡片 */
+  .leg{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:16px 0;}
+  .leg-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px;}
+  .leg-no{font-size:13px; font-weight:700; color:#fff; background:var(--main); border-radius:8px; padding:3px 10px; letter-spacing:1px;}
+  .leg-title{font-size:18px; font-weight:700;}
+  .leg-time{font-size:13px; color:var(--sub); margin-left:auto;}
+  .leg ul{margin:8px 0 0; padding-left:20px;}
+  .leg li{margin:5px 0; font-size:15px;}
+  .leg .hl{color:var(--red); font-weight:600;}
+  .leg .stay{color:var(--green); font-weight:600;}
+  .leg .stop b{color:var(--main);}
+
+  /* 表格 */
+  table{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin:14px 0; font-size:14px;}
+  th,td{padding:11px 13px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--main-soft); font-weight:700; color:#0c4a5e; white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  td.hl{color:var(--red); font-weight:700;}
+
+  /* 页脚 */
+  footer{padding:32px 20px 40px; text-align:center; color:var(--sub); font-size:13px;}
+  footer a{color:var(--main);}
+
+  @media(max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    header.hero h1{font-size:24px;}
+    h2.sec{font-size:19px;}
+    .leg-title{font-size:16px;}
+    th,td{padding:9px 8px; font-size:13px;}
+    .leg-time{margin-left:0; width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="brand" href="index.html">百春</a>
+  <a class="back" href="index.html#travel">← 返回旅行</a>
+</div>
+
+<header class="hero">
+  <span class="tag">自驾 · 一日 · G529 红岭公路</span>
+  <h1>徽风皖韵</h1>
+  <p class="sub">大别山麓 · 红色金寨启程 —— 金寨到安庆一日自驾</p>
+  <p class="subtitle">2026年10月21日（周三）08:00 出发 · 15:45 前后抵安庆</p>
+</header>
+
+<div class="wrap">
+
+  <figure class="cover-fig">
+    <img src="images/anqing-cover.jpg" alt="G529 红岭公路 · 华东最美自驾公路 · 示意图（AI 生成）" />
+    <figcaption>G529 红岭公路 · 华东最美自驾公路 · 示意图（AI 生成）</figcaption>
+  </figure>
+
+  <div class="stats">
+    <div class="stat"><b>1</b><span>天</span></div>
+    <div class="stat"><b>355</b><span>公里（山路95+高速260）</span></div>
+    <div class="stat"><b>12</b><span>站</span></div>
+    <div class="stat"><b>15:45</b><span>抵安庆（稳保17:00前）</span></div>
+  </div>
+
+  <h2 class="sec">路线总览</h2>
+  <p class="sec-sub">绿色风景线精华半环 + 古碑上高速 · 全程硬化路、无夜路</p>
+  <div class="route">
+    金寨县城（红军广场 · 梅山湖）→ <b>G529 红岭公路</b>（西茶谷 → 东莲花山 → 响山寺 → 丁埠村 → 大湾村）→ 马鬃岭车览 → <b>古碑收费站</b> 上 G42 / G4222 → 霍山枢纽转 <b>G35 济广高速</b> → 岳西 → <b>安庆</b>
+  </div>
+
+  <div class="note" style="margin-top:16px;">
+    <b>🌿 为什么这条线能 17:00 到（关键高速节点）</b>
+    <p style="margin:8px 0 6px;"><b>马鬃岭枢纽（古碑镇）</b>：G4222 和襄高速 × G42 沪蓉高速枢纽，2025 年底通车。大湾村、马鬃岭就在古碑镇旁，红岭公路玩完就近上古碑收费站上高速，不绕路。</p>
+    <p style="margin:0 0 6px;"><b>霍山枢纽</b>：G4222 × G35 济广高速十字枢纽，转 G35 一路南下经岳西直达安庆，全程高速约 260 km / 3 小时。</p>
+    <p style="margin:0;"><b>G529 不是另一条路</b>：它就是红岭公路 / 绿色线本身（普通国道，「华东最美自驾游路线」组成部分），金寨段 2023 年已改造升级，沥青铺装、观景台齐全。</p>
+  </div>
+
+  <h2 class="sec">一日行程安排</h2>
+  <p class="sec-sub">上午山路看景 · 午后高速赶路 · 15:45 前后到安庆</p>
+
+  <div class="leg">
+    <div class="leg-head"><span class="leg-no">上午 ①</span><span class="leg-title">金寨县城 · 红色起点</span><span class="leg-time">08:00 – 09:30</span></div>
+    <ul>
+      <li class="stop"><b>红军广场 · 金寨县革命博物馆</b>：金寨是「红军摇篮、将军故乡」，全国第二大将军县（59 位开国将军、10 万英烈）。看烈士纪念塔、革命博物馆、红军纪念堂，约 50 分钟。<b>出发前加满油。</b></li>
+      <li class="stop"><b>梅山湖 · 梅山水库大坝</b>：1954 年建成的淮河上游枢纽，当年世界第一高连拱坝；蓄水成「梅山湖」高峡平湖，大坝观景台看湖光山色，约 40 分钟。</li>
+    </ul>
+  </div>
+
+  <div class="leg">
+    <div class="leg-head"><span class="leg-no">上午 ②</span><span class="leg-title">G529 红岭公路 · 精华段</span><span class="leg-time">09:30 – 11:50</span></div>
+    <ul>
+      <li class="stop"><b>西茶谷 · 东莲花山</b>：沿 G529 南下。西茶谷是六安瓜片核心茶区，层层茶园梯田（秋日茶山苍翠）；东莲花山海拔近千米，有「玻璃天路」「莲花之镜」观景，车览不停留。</li>
+      <li class="stop"><b>响山寺</b>：唐代古寺（783 年，名臣段秀实舍宅为寺），省级文保、金寨佛教中心；旁有抗战名将廖磊墓、皮定均将军陈列室。停留 30 分钟。</li>
+      <li class="stop"><b>丁埠村</b>：1929 年立夏节起义（商南起义）策源地，大王庙起义旧址，金寨红色发端之一。车览或短停。</li>
+      <li class="stop"><b>大湾村</b>：习近平总书记 2016 年考察的脱贫示范村，民宿、光伏、茶产业。停留 30 分钟，午餐在此或车上（农家快餐，不排队）。</li>
+    </ul>
+  </div>
+
+  <div class="leg">
+    <div class="leg-head"><span class="leg-no">中午 ③</span><span class="leg-title">马鬃岭车览 · 上古碑高速</span><span class="leg-time">11:50 – 12:50</span></div>
+    <ul>
+      <li class="stop"><b>马鬃岭（车览）</b>：金寨南部原始森林，主峰海拔 1671 m，华东最后一片原始森林之一。走公路车览林海，不进景区徒步（需 2 小时）。</li>
+      <li class="hl">⚠️ 12:30 ~ 13:00 之间必须上古碑收费站上高速 —— 这是全天 deadline，红岭公路哪个观景点超时就砍哪个。</li>
+    </ul>
+  </div>
+
+  <div class="leg">
+    <div class="leg-head"><span class="leg-no">下午 ④</span><span class="leg-title">高速直达安庆</span><span class="leg-time">12:50 – 15:45</span></div>
+    <ul>
+      <li>古碑上 G42 / G4222 → <b>霍山枢纽转 G35 济广高速</b> → 经岳西直达安庆，约 260 km / 3 小时全程高速。霍山服务区休息一次；G35 山区段限速 80~100，按导航走。</li>
+      <li class="stay">🅿️ 15:30 ~ 16:00 抵达安庆，17:00 前稳到，缓冲 1 小时以上。到后停车入住、休整。</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">🗺️ 沿途站点速览</h2>
+  <p class="sec-sub">绿色 = 山路 G529 · 蓝色 = 高速段</p>
+  <table>
+    <tr><th>时间</th><th>站点</th><th>看点</th></tr>
+    <tr><td>08:00</td><td>金寨县城 · 红军广场</td><td>将军县红色地标，革命博物馆</td></tr>
+    <tr><td>08:50</td><td>梅山湖 · 梅山水库</td><td>世界第一高连拱坝，高峡平湖</td></tr>
+    <tr><td>09:30</td><td>西茶谷</td><td>六安瓜片核心茶区，梯田茶山</td></tr>
+    <tr><td>09:45</td><td>东莲花山</td><td>玻璃天路、莲花之镜，云海</td></tr>
+    <tr><td>10:20</td><td>响山寺</td><td>783 年唐代古寺，省级文保</td></tr>
+    <tr><td>10:50</td><td>丁埠村</td><td>立夏节起义策源地</td></tr>
+    <tr><td>11:20</td><td>大湾村</td><td>脱贫示范村，民宿集群</td></tr>
+    <tr><td>12:00</td><td>马鬃岭</td><td>1671 m 原始森林，车览</td></tr>
+    <tr><td>12:40</td><td>古碑收费站</td><td>上高速（deadline 13:00）</td></tr>
+    <tr><td>13:30</td><td>霍山枢纽</td><td>G4222 × G35，转 G35 南下</td></tr>
+    <tr><td>14:30</td><td>岳西</td><td>G35 途中，安庆在望</td></tr>
+    <tr><td class="hl">15:45</td><td class="hl">安庆</td><td class="hl">抵达，17:00 前稳到</td></tr>
+  </table>
+
+  <div class="note">
+    <b>🚗 动态路线图</b><br>
+    带车牌「鲁B·6U568」的小车沿路线实时跑：绿色 = 红岭公路山路，蓝色 = 高速段，时钟精确到秒，卫星底图可切换。
+    <a href="https://www.workbuddy.cn/space/d/PBe275rlOMHYxLxGwRtul4" target="_blank" rel="noopener" style="color:var(--main); font-weight:600;">打开动态路线图 →</a>
+  </div>
+
+  <h2 class="sec">⚠️ 硬提醒</h2>
+  <div class="warn">
+    <b>deadline 12:30 ~ 13:00 古碑上高速</b><br>
+    这是 17:00 到安庆的唯一命门。红岭公路观景点多，超时就砍，保上高速时间。
+    <ul style="margin:10px 0 0; padding-left:20px;">
+      <li><b>加油</b>：县城出发加满，红岭公路无加油站，古碑镇有一个。</li>
+      <li><b>山路</b>：G529 金寨段是硬化旅游公路，但弯多坡陡、部分路段窄（约 6.5 m），弯道不超车、多鸣笛、靠右走；谷段信号可能弱，提前下离线地图。</li>
+      <li><b>天气</b>：当日无降水、能见度好，是走山路最理想天气；安庆东北风 4~5 级，江边带外套。</li>
+    </ul>
+  </div>
+
+  <div class="note">备注：以上为 2026 年 10 月参考，时刻为计划值，请出发前以导航实测路况为准。地图坐标为示意近似值。</div>
+
+</div>
+
+<footer>
+  <p>百春 · 徽风皖韵 —— 金寨到安庆一日自驾</p>
+  <p><a href="https://www.workbuddy.cn/space/d/PBe275rlOMHYxLxGwRtul4" target="_blank" rel="noopener">动态路线图 →</a> ｜ <a href="index.html">返回首页</a></p>
+</footer>
+
+</body>
+</html>
